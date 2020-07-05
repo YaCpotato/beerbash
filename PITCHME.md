@@ -26,6 +26,17 @@
 
 ---
 
+## どんな人間？
+- 自分が一番格下な環境を好む
+    - 勉強会
+    - Atcoder(5)
+- 多趣味(ゲーム、ギター、バイク、PC)
+- Twitter大好き
+
+@yasshi_dayooon
+
+---
+
 ## よくあるポートフォリオの用途
 
 @ul
@@ -65,5 +76,50 @@
 - クロスドメイントラッキング
     - Vue CLIでの設定、Wordpressでの設定
 - Twitterカード
+- SEO対策
 @endul
 
+---
+
+## クロスドメイントラッキング
+
++++
+
+### 目的
+ポートフォリオサイトとブログサイトのトラッキングを統一する
+- https://yasshi-lab.tech/
+- https://blog.yasshi-lab.tech/
+
++++
+
+### 現状整理
+https://yasshi-lab.tech/
+- Vue CLI
+- firebase hosting
+
+https://blog.yasshi-lab.tech/
+- なんかよくあるWordpressホスティングサイト
+
++++
+### 問題と解決法
+Vue CLI
+- yarn build後のdist/下にできるindex.htmlのhead終了直前にトラッキングコード
+    - vue-analyticsを使用することで解決
+
+Wordpress
+[ググったら出てくる方法](https://wacul-ai.com/blog/access-analysis/google-analytics-setting/wp-ga/)　でOK
+
++++
+### vue-analytics
+
+```js
+import VueAnalytics from "vue-analytics";
+
+Vue.use(VueAnalytics, {
+  id: process.env.VUE_APP_GA_MEASUREMENT_ID,
+  router,
+  linkers: ["https://yasshi-lab.tech/", "https://blog.yasshi-lab.tech/"]
+});
+```
+
++++
